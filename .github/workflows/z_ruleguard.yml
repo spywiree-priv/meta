@@ -1,0 +1,34 @@
+name: ruleguard
+
+on:
+  workflow_call:
+    inputs:
+      generate:
+        type: boolean
+        required: false
+      args:
+        type: string
+        required: false
+
+jobs:
+  ruleguard:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          repository: dgryski/semgrep-go
+          path: rules
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: go.mod
+      - if: ${{ inputs.generate }}
+        run: go generate ./...
+        shell: bash
+      - name: ruleguard
+        run: |
+          # needs to be outside of the workspace for some reason
+          mv rules ../
+          go install github.com/quasilyte/go-ruleguard/cmd/ruleguard@latest
+          go get -u github.com/quasilyte/go-ruleguard/dsl@latest
+          ruleguard -c=0 -rules ../rules/ruleguard.rules.go ${{ inputs.args }} ./...

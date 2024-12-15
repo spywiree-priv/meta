@@ -1,0 +1,9 @@
+{
+	"yaml.schemas": {
+		"https://json.schemastore.org/github-workflow.json": [
+			"file:///home/antoni/GoogleDrive/Programowanie/%21Og%C3%B3lne/meta/dotgithub/workflows/release.yml",
+			"file:///home/antoni/GoogleDrive/Programowanie/%21Og%C3%B3lne/meta/dotgithub/workflows/lint.yml",
+			"file:///home/antoni/GoogleDrive/Programowanie/%21Og%C3%B3lne/meta/dotgithub/workflows/release_xgo.yml"
+		]
+	}
+}

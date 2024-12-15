@@ -1,0 +1,43 @@
+name: release_xgo_base
+
+on:
+  workflow_call:
+    inputs:
+      generate:
+        type: boolean
+        required: false
+      project_path:
+        type: string
+        required: false
+
+permissions:
+  contents: write
+
+jobs:
+  release_xgo:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - if: ${{ inputs.generate }}
+        run: go generate ./...
+        shell: bash
+
+      - uses: crazy-max/ghaction-xgo@v3
+        with:
+          xgo_version: latest
+          go_version: latest
+          prefix: "${{ github.event.repository.name }}-${{ github.ref_name }}"
+          targets: windows/386,windows/amd64,linux/386,linux/amd64
+          ldflags: "-s -w"
+          trimpath: true
+          pkg: ${{ inputs.project_path }}
+
+      - uses: actions/setup-python@v4
+        with:
+          python-version: 3.x
+      - run: curl https://raw.githubusercontent.com/spywiree-priv/meta/refs/heads/main/.github/workflows/release_xgo.py | python -
+        shell: bash
+
+      - uses: softprops/action-gh-release@v2
+        with:
+          files: "build/*"
