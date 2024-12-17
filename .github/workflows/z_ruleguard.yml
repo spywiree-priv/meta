@@ -32,3 +32,4 @@ jobs:
           go install github.com/quasilyte/go-ruleguard/cmd/ruleguard@latest
           go get -u github.com/quasilyte/go-ruleguard/dsl@latest
           ruleguard -c=0 -rules ../rules/ruleguard.rules.go ${{ inputs.args }} ./...
+        shell: bash
