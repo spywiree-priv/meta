@@ -1,14 +1,14 @@
 import hashlib, zipfile, tarfile, os
 
 
-def make_zip(path: str, src: str, dst: str):
-    with zipfile.ZipFile(path, "w", zipfile.ZIP_DEFLATED) as f:
-        f.write(src, dst)
-
-
 def make_targz(path: str, src: str, dst: str):
     with tarfile.open(path, "w:gz") as f:
         f.add(src, dst)
+
+
+def make_zip(path: str, src: str, dst: str):
+    with zipfile.ZipFile(path, "w", zipfile.ZIP_DEFLATED) as f:
+        f.write(src, dst)
 
 
 def hash_file(path: str):

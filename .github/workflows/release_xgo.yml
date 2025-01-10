@@ -27,7 +27,7 @@ jobs:
           xgo_version: latest
           go_version: latest
           prefix: "${{ github.event.repository.name }}-${{ github.ref_name }}"
-          targets: windows/386,windows/amd64,linux/386,linux/amd64
+          targets: windows/amd64,windows/arm64,linux/amd64,linux/arm64
           ldflags: "-s -w"
           trimpath: true
           pkg: ${{ inputs.project_path }}
