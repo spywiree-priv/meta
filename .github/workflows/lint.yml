@@ -12,21 +12,21 @@ on:
 
 jobs:
   golangci-lint:
-    uses: spywiree-priv/meta/.github/workflows/z_golangci-lint.yml@main
+    uses: spywiree/meta/.github/workflows/z_golangci-lint.yml@main
     with:
       generate: ${{ inputs.generate }}
 
   govulncheck:
-    uses: spywiree-priv/meta/.github/workflows/z_govulncheck.yml@main
+    uses: spywiree/meta/.github/workflows/z_govulncheck.yml@main
     with:
       generate: ${{ inputs.generate }}
 
   ruleguard:
-    uses: spywiree-priv/meta/.github/workflows/z_ruleguard.yml@main
+    uses: spywiree/meta/.github/workflows/z_ruleguard.yml@main
     with:
       generate: ${{ inputs.generate }}
       args: "-disable largeloopcopy"
 
   test:
     if: ${{ inputs.test }}
-    uses: spywiree-priv/meta/.github/workflows/z_test.yml@main
+    uses: spywiree/meta/.github/workflows/z_test.yml@main

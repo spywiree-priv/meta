@@ -35,7 +35,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: 3.x
-      - run: curl https://raw.githubusercontent.com/spywiree-priv/meta/refs/heads/main/.github/workflows/release_xgo.py | python -
+      - run: curl https://raw.githubusercontent.com/spywiree/meta/refs/heads/main/.github/workflows/release_xgo.py | python -
         shell: bash
 
       - uses: softprops/action-gh-release@v2

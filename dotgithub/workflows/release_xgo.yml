@@ -10,6 +10,6 @@ permissions:
 
 jobs:
   release_xgo:
-    uses: spywiree-priv/meta/.github/workflows/release_xgo.yml@main
+    uses: spywiree/meta/.github/workflows/release_xgo.yml@main
     with:
       generate: false
