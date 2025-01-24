@@ -6,6 +6,10 @@ on:
       generate:
         type: boolean
         required: false
+      args:
+        type: string
+        required: false
+        default: "--timeout=5m -Egosimple -Egovet -Eineffassign  -Estaticcheck -Eunused -Egosec -Egocritic -Egosmopolitan -pperformance"
 
 jobs:
   golangci-lint:
@@ -20,4 +24,4 @@ jobs:
         shell: bash
       - uses: golangci/golangci-lint-action@v6
         with:
-          args: --timeout=5m -E gocritic
+          args: ${{ inputs.args }}
