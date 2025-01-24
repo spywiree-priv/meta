@@ -17,6 +17,10 @@ on:
         type: boolean
         required: false
         default: true
+      upload-artifact:
+        type: boolean
+        required: false
+        default: false
 
 permissions:
   contents: write
@@ -50,3 +54,8 @@ jobs:
         if: ${{ inputs.publish }}
         with:
           files: "build/*"
+
+      - uses: actions/upload-artifact@v4
+        if: ${{ inputs.upload-artifact }}
+        with:
+          path: "build/"
