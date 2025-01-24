@@ -6,6 +6,8 @@ on:
       - "**/*.go"
       - "go.*"
   push:
+    tags-ignore:
+      - "*"
     paths:
       - "**/*.go"
       - "go.*"
