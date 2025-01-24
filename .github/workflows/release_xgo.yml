@@ -9,6 +9,10 @@ on:
       project_path:
         type: string
         required: false
+      targets:
+        type: string
+        required: false
+        default: "windows/amd64,windows/arm64,linux/amd64,linux/arm64"
 
 permissions:
   contents: write
@@ -27,7 +31,7 @@ jobs:
           xgo_version: latest
           go_version: latest
           prefix: "${{ github.event.repository.name }}-${{ github.ref_name }}"
-          targets: windows/amd64,windows/arm64,linux/amd64,linux/arm64
+          targets: ${{ inputs.targets }}
           ldflags: "-s -w"
           trimpath: true
           pkg: ${{ inputs.project_path }}
