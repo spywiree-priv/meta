@@ -9,7 +9,7 @@ on:
       args:
         type: string
         required: false
-        default: "--timeout=5m -Egosimple -Egovet -Eineffassign  -Estaticcheck -Eunused -Egosec -Egocritic -Egosmopolitan -pperformance"
+        default: "--timeout=5m -Egosimple -Egovet -Eineffassign -Estaticcheck -Eunused -Egosec -Egocritic -Egosmopolitan -pperformance"
 
 jobs:
   golangci-lint:
