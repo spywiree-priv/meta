@@ -45,9 +45,11 @@ jobs:
           pkg: ${{ inputs.project_path }}
 
       - uses: actions/setup-python@v5
+        if: ! ${{ inputs.upload-artifact }}
         with:
           python-version: 3.x
       - run: curl https://raw.githubusercontent.com/spywiree/meta/refs/heads/main/.github/workflows/release_xgo.py | python -
+        if: ! ${{ inputs.upload-artifact }}
         shell: bash
 
       - uses: softprops/action-gh-release@v2
