@@ -13,6 +13,10 @@ on:
         type: string
         required: false
         default: "windows/amd64,windows/arm64,linux/amd64,linux/arm64"
+      publish:
+        type: boolean
+        required: false
+        default: true
 
 permissions:
   contents: write
@@ -43,5 +47,6 @@ jobs:
         shell: bash
 
       - uses: softprops/action-gh-release@v2
+        if: ${{ inputs.publish }}
         with:
           files: "build/*"
