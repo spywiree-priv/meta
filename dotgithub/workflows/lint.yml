@@ -3,15 +3,11 @@ name: lint
 on:
   pull_request:
     branches: ["*"]
-    paths:
-      - "**/*.go"
-      - "go.*"
+    paths: ["**/*.go", "go.*"]
   push:
     branches: ["*"]
     tags-ignore: ["*"]
-    paths:
-      - "**/*.go"
-      - "go.*"
+    paths: ["**/*.go", "go.*"]
   workflow_dispatch:
 
 jobs:
