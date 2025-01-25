@@ -2,12 +2,13 @@ name: lint
 
 on:
   pull_request:
+    branches: ["*"]
     paths:
       - "**/*.go"
       - "go.*"
   push:
-    tags-ignore:
-      - "*"
+    branches: ["*"]
+    tags-ignore: ["*"]
     paths:
       - "**/*.go"
       - "go.*"
